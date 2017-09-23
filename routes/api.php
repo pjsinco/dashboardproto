@@ -17,6 +17,6 @@ use Illuminate\Http\Request;
     //return $request->user();
 //});
 
-Route::get('/v1/doctor/{id}', function($id) {
-  return App\User::findOrFail($id);
-});
+Route::get('/v1/users/{user}', 'UsersController@show');
+
+Route::post('/v1/users/{user}', 'UsersController@update');
