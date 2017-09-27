@@ -199,14 +199,14 @@ Route::get('/v1/users/{id}/cme', function($id) {
       ],
       "primaries" => [
         [
-          "desc" => "Radiology",
+          "desc" => "Pediatrics",
           "earned" => 25.5,
           "required" => 50.0,
           "generalRequired" => 96.0,
           "cat1aRequired" => 0.0,
           "subs" => [
             [
-              "desc" => "Radiation Therapy",
+              "desc" => "Pediatric Neurology",
               "earned" => 1.5,
               "required" => 13.0
             ]
@@ -214,7 +214,7 @@ Route::get('/v1/users/{id}/cme', function($id) {
         ],
         [
           "desc" => "Family Medicine",
-          "earned" => 23.0,
+          "earned" => 3.0,
           "required" => 30.0,
           "generalRequired" => 150.0,
           "cat1aRequired" => 30.0,
