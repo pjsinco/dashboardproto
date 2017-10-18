@@ -66,7 +66,7 @@ Route::get('/v1/users/{id}/cme', function($id) {
       ],
       "primaries" => [
         [
-          "desc" => "Pediatics",
+          "desc" => "Pediatrics",
           "earned" => 5.5,
           "required" => 50.0,
           "generalRequired" => 120.0,
@@ -75,14 +75,14 @@ Route::get('/v1/users/{id}/cme', function($id) {
       ]
     ],
     [
-      "aoa_id" => "269803", // 1
+      "aoa_id" => "269804", // 1
       "general" => [
         "earned" => 17.0,
         "cat1aEarned" => 2.5
       ],
       "primaries" => [
         [
-          "desc" => "Pediatics",
+          "desc" => "Pediatrics",
           "earned" => 5.5,
           "required" => 50.0,
           "generalRequired" => 120.0,
@@ -98,14 +98,14 @@ Route::get('/v1/users/{id}/cme', function($id) {
       ]
     ],
     [
-      "aoa_id" => "269804", // 2
+      "aoa_id" => "269805", // 2
       "general" => [
         "earned" => 97.0,
         "cat1aEarned" => 22.5
       ],
       "primaries" => [
         [
-          "desc" => "Pediatics",
+          "desc" => "Pediatrics",
           "earned" => 65.5,
           "required" => 50.0,
           "generalRequired" => 120.0,
@@ -137,7 +137,7 @@ Route::get('/v1/users/{id}/cme', function($id) {
       "primaries" => [],
     ],
     [
-      "aoa_id" => "269806", // 4
+      "aoa_id" => "269807", // 4
       "general" => [
         "earned" => 92.0,
         "cat1aEarned" => 22.5
@@ -154,7 +154,7 @@ Route::get('/v1/users/{id}/cme', function($id) {
       ]
     ],
     [
-      "aoa_id" => "269806", // 5
+      "aoa_id" => "269808", // 5
       "general" => [
         "earned" => 63.0,
         "cat1aEarned" => 12.5
@@ -175,7 +175,7 @@ Route::get('/v1/users/{id}/cme', function($id) {
       ]
     ],
     [
-      "aoa_id" => "269807", // 6
+      "aoa_id" => "269809", // 6
       "general" => [
         "earned" => 123.0,
         "cat1aEarned" => 23.5
@@ -192,7 +192,7 @@ Route::get('/v1/users/{id}/cme', function($id) {
       ]
     ],
     [
-      "aoa_id" => "269802", // 7
+      "aoa_id" => "269810", // 7
       "general" => [
         "earned" => 67.0,
         "cat1aEarned" => 26.0

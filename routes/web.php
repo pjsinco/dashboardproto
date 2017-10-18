@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/status', function() {
   return view('welcome');
 });
+
+Route::get('/callback', function() {
+  echo 'hiya from callback';
+});
