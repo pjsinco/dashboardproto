@@ -63,7 +63,7 @@ $factory->define(App\User::class, function (Faker $faker) use ($suffixes, $prefi
     },
 
     'member_type' => function() {
-      return ['DO-M', 'S', 'DO-NM', 'OTHER'][mt_rand(0, 4)];
+      return ['DO-M', 'S', 'DO-NM', 'OTHER'][mt_rand(0, 3)];
     },
 
   ];

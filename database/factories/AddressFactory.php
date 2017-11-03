@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Address::class, function (Faker $faker) {
   return [
     'aoa_id' => function() {
-      $user = factory('App\User')->create();
+      $user = factory(App\User::class)->create();
       return $user->aoa_id;
     },
 
