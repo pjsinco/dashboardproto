@@ -15,7 +15,8 @@ class CreateUsersTable extends Migration
   {
     Schema::create('users', function (Blueprint $table) {
 
-      $table->increments('id');
+      $table->integer('aoa_id');
+
       $table->string('user_name');
       $table->string('password');
       $table->rememberToken();
@@ -33,7 +34,6 @@ class CreateUsersTable extends Migration
 
 
       // Membership
-      $table->integer('aoa_id')->unsigned();
       $table->char('status', 4);
       $table->datetime('paid_thru')->nullable();
       $table->string('member_type');

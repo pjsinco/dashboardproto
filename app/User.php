@@ -2,13 +2,13 @@
 
 namespace App;
 
-use Laravel\Passport\HasApiTokens;
+//use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-  use HasApiTokens, Notifiable;
+  //use HasApiTokens, Notifiable;
 
   /**
    * The attributes that are mass assignable.
@@ -24,6 +24,7 @@ class User extends Authenticatable
     'middle_name',
     'email',
     'website',
+    'aoa_id',
   ];
 
   /**
@@ -34,4 +35,12 @@ class User extends Authenticatable
   protected $hidden = [
     'password', 'remember_token',
   ];
+
+  protected $primaryKey = 'aoa_id';
+
+  public $incrementing = false;
+
+  public function address() {
+    return $this->hasOne(Address::class, 'aoa_id');
+  }
 }

@@ -30,7 +30,9 @@ $factory->define(App\User::class, function (Faker $faker) use ($suffixes, $prefi
   $safeLastName = preg_replace("/[^A-Za-z0-9 ]/", '', $lastName);
 
   return [
+
     'aoa_id' => $faker->unique()->numberBetween(100000, 350000),
+
     'user_name' => sprintf('%s.%s', 
                            strtolower($firstName), 
                            strtolower($safeLastName)),
