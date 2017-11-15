@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+Route::get('/', 'UsersController@index');
 
-Route::get('/status', function() {
-  return view('welcome');
-});
+//Route::get('/status', function() {
+  //return view('welcome');
+//});
+
+Route::get('/users', 'UsersController@index');
 
 Route::get('/callback', function() {
   echo 'hiya from callback';
