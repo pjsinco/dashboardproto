@@ -22,6 +22,8 @@ Route::get('/v1/users/{user}', 'UsersController@show');
 
 Route::post('/v1/users/{user}', 'UsersController@update');
 
+Route::get('/v1/addresses/{id}', 'AddressesController@show');
+
 Route::get('/v1/users/{id}/cme', function($id) {
 
   $data = [

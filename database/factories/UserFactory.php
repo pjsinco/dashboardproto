@@ -13,7 +13,14 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$prefixes = [ '1st Lt', 'Adm', 'Atty', 'Brother', 'Capt', 'Chief', 'Cmdr', 
+  'Col', 'Dean', 'Dr', 'Elder', 'Father', 'Gen', 'Gov', 'Hon', 'Lt Col', 
+  'Maj', 'MSgt', 'Mr', 'Mrs', 'Prince', 'Prof', 'Rabbi', 'Rev', 'Sister' ];
+
+$suffixes = [ 'II', 'III', 'IV', 'CPA', 'DDS', 'Esq', 'JD', 'Jr', 'LLD',
+  'MD', 'PhD', 'Ret', 'RN', 'Sr', 'DO' ];
+
+$factory->define(App\User::class, function (Faker $faker) use ($suffixes, $prefixes) {
   static $password;
 
   $firstName = $faker->firstName;
@@ -23,17 +30,24 @@ $factory->define(App\User::class, function (Faker $faker) {
   $safeLastName = preg_replace("/[^A-Za-z0-9 ]/", '', $lastName);
 
   return [
-    'name' => sprintf('%s.%s', 
-                      strtolower($firstName), 
-                      strtolower($safeLastName)),
+
+    'aoa_id' => $faker->unique()->numberBetween(100000, 350000),
+
+    'user_name' => sprintf('%s.%s', 
+                           strtolower($firstName), 
+                           strtolower($safeLastName)),
+
     'password' => $password ?: $password = bcrypt('secret'),
+
     'remember_token' => str_random(10),
 
     'first_name' => $firstName,
     'middle_name' => $faker->optional()->firstName,
     'last_name' => $lastName,
-    'suffix' => $faker->optional()->suffix,
+    'suffix' => $suffixes[array_rand($suffixes)],
+    'prefix' => $prefixes[array_rand($prefixes)],
     'designation' => 'DO',
+
     'email' => sprintf('%s%s@%s', 
                        substr($firstName, 0, 1),
                        $safeLastName,
@@ -42,31 +56,16 @@ $factory->define(App\User::class, function (Faker $faker) {
       return (mt_rand(0, 1) == 0 ? 'https://www.'. $domain : null);
     },
 
-    'home_addr_1' => sprintf('%s %s', 
-                             $faker->buildingNumber,
-                             $faker->streetName),
-    'home_addr_2' => $faker->optional()->secondaryAddress,
-    'home_city' => $faker->city,
-    'home_state' => $faker->stateAbbr,
-    'home_zip' => $faker->postcode,
-    'home_phone' => $faker->phoneNumber,
+    'preferred_contact' => ['home', 'business'][mt_rand(0, 1)],
 
-    'bus_addr_1' => sprintf('%s %s', 
-                             $faker->buildingNumber,
-                             $faker->streetName),
-    'bus_addr_2' => $faker->optional()->secondaryAddress,
-    'bus_city' => $faker->city,
-    'bus_state' => $faker->stateAbbr,
-    'bus_zip' => $faker->postcode,
-    'bus_phone' => $faker->phoneNumber,
-    
-    'aoa_id' => $faker->unique()->numberBetween(100000, 350000),
     'status' => $status,
+
     'paid_thru' => function() use($status) {
       return ($status == 'A' ? '2018-05-31 00:00:00' : null);
     },
+
     'member_type' => function() {
-      return ['DO-M', 'DO-M', 'DO-NM'][mt_rand(0, 2)];
+      return ['DO-M', 'S', 'DO-NM', 'OTHER'][mt_rand(0, 3)];
     },
 
   ];

@@ -11,6 +11,11 @@ class UsersTableSeeder extends Seeder
    */
   public function run()
   {
-    factory(App\User::class, 50)->create();
+    factory(App\User::class, 50)
+      ->create()
+      ->each(function ($user) {
+        $addr = factory(App\Address::class)->create([ 'aoa_id' => $user->aoa_id ]);
+        $user->address()->save($addr);
+      });
   }
 }

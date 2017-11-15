@@ -13,6 +13,11 @@ class UsersController extends Controller
     return $user;
   }
 
+  public function index()
+  {
+    return User::all()->pluck('aoa_id');
+  }
+
   public function update(User $user, Request $request)
   {
 
